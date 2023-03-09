@@ -4,10 +4,10 @@ import java.util.Scanner;
 Proje:Student Management System
      -1-Herhangi bir eğitim kurumu için öğrenci yönetim uygulaması geliştiriniz.
      -2-Kullanıcı
-               -öğrenci kayıt
-               -öğrenci veya öğrencileri görüntüleme
-               -id ile öğrenci güncelleme
-               -id ile öğrenci silme
+               -C:create: öğrenci kayıt
+               -R:read: öğrenci veya öğrencileri görüntüleme
+               -U:update: id ile öğrenci güncelleme
+               -D:delete: id ile öğrenci silme
        işlemlerini yapabilmeli.
      -3-öğrenci:id,name,lastname,city,age özelliklerine sahiptir.
  */
