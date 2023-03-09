@@ -54,7 +54,11 @@ public class Runner {
                     break;
                 case 5:
                     id=getId(inp);
-                    //search
+                    Student student=service.getStudentById(id);
+                    if (student==null){
+                        System.out.println("Öğrenci bulunamadı");
+                    }else System.out.println(student);
+
                     break;
                 case 0:
                     System.out.println("İyi günler...");
