@@ -162,5 +162,32 @@ public class StudentRepository {
         return student;
     }
 
+    //20-veri güncelleme
+    public void update(Student student) {
+        getConnection();
+        String query="UPDATE t_student SET name=?,lastname=?,city=?,age=? where id=?";
+        getPreparedStatement(query);
+        try {
+            prst.setString(1,student.getName());
+            prst.setString(2,student.getLastName());
+            prst.setString(3,student.getCity());
+            prst.setInt(4,student.getAge());
+            prst.setInt(5,student.getId());
+            int updated=prst.executeUpdate();
+            if (updated>0){
+                System.out.println("Öğrenci başarıyla güncellenmiştir.");
+            }else System.out.println("Hata oluştu");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }finally {
+            try {
+                prst.close();
+                conn.close();
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
+            }
+        }
 
+
+    }
 }

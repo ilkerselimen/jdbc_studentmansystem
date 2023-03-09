@@ -8,6 +8,7 @@ Proje:Student Management System
                -R:read: öğrenci veya öğrencileri görüntüleme
                -U:update: id ile öğrenci güncelleme
                -D:delete: id ile öğrenci silme
+               - ad-soyad ile öğrenci filtreleme
        işlemlerini yapabilmeli.
      -3-öğrenci:id,name,lastname,city,age özelliklerine sahiptir.
  */
@@ -46,7 +47,7 @@ public class Runner {
                     break;
                 case 3:
                     id=getId(inp);
-                    //güncelleme
+                    service.updateStudent(id);
                     break;
                 case 4:
                     id=getId(inp);

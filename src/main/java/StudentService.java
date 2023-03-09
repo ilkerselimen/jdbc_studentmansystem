@@ -55,6 +55,11 @@ public class StudentService {
             int age = inp.nextInt();
             inp.nextLine();
             //yeni değerler ile fieldları güncelle
+            student.setName(name);
+            student.setLastName(lastName);
+            student.setCity(city);
+            student.setAge(age);
+            repository.update(student);
         }else System.out.println("Öğrenci bulunamadı");
     }
 
