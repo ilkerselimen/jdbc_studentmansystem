@@ -37,7 +37,7 @@ public class StudentRepository {
     public void createTable(){
         getConnection();
         getStatement();
-        try {
+        try {//idye unique constrainti eklenmeli
             st.execute("CREATE TABLE IF NOT EXISTS t_student(id SERIAL,name VARCHAR(50),lastname VARCHAR(50),city VARCHAR(20),age INT)");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -132,6 +132,35 @@ public class StudentRepository {
         }
     }
 
+//18-id ile tek bir kayıt dönme
+    public Student findStudentById(int id) {
+        Student student=null;
+        getConnection();
+        String query="SELECT * FROM t_student WHERE id=?";//+id
+        try {
+            getPreparedStatement(query);
+            prst.setInt(1,id);
+            ResultSet rs=prst.executeQuery();
+            if (rs.next()){
+                student=new Student();
+                student.setId(rs.getInt("id"));
+                student.setName(rs.getString("name"));
+                student.setLastName(rs.getString("lastname"));
+                student.setCity(rs.getString("city"));
+                student.setAge(rs.getInt("age"));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }finally {
+            try {
+                prst.close();
+                conn.close();
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+        return student;
+    }
 
 
 }
