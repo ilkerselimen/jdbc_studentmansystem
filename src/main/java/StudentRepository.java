@@ -197,7 +197,7 @@ public class StudentRepository {
         List<Student> list=new ArrayList<>();
         getConnection();
         String searched="%"+nameOrLastname+"%";
-        String query="SELECT * FROM t_students WHERE name ILIKE ? or lastname ILIKE ?";
+        String query="SELECT * FROM t_student WHERE name ILIKE ? or lastname ILIKE ?";
         getPreparedStatement(query);
         try {
             prst.setString(1,searched);// ILIKE '%name%'

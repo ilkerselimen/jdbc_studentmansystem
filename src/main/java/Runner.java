@@ -33,7 +33,7 @@ public class Runner {
             System.out.println("3-Öğrenci güncelle");
             System.out.println("4-Öğrenci sil");
             System.out.println("5-Öğrenci bul");
-            System.out.println("5-Ad veya Soyad ile Öğrenci filtrele");
+            System.out.println("6-Ad veya Soyad ile Öğrenci filtrele");
             System.out.println("0-ÇIKIŞ");
             System.out.println("İşlem seçiniz: ");
             select=inp.nextInt();
