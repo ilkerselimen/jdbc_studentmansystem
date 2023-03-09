@@ -40,6 +40,23 @@ public class StudentService {
     public Student getStudentById(int id) {
         return repository.findStudentById(id);
     }
+    //19-öğrenciyi güncelleme
+    public void updateStudent(int id){
+        //bu id ile eşleyen öğrenci var mı?
+        Student student=getStudentById(id);
+        if (student!=null){
+            System.out.println("Ad: ");
+            String name=inp.nextLine();
+            System.out.println("Soyad: ");
+            String lastName=inp.nextLine();
+            System.out.println("Sehir: ");
+            String city=inp.nextLine();
+            System.out.println("Yas: ");
+            int age = inp.nextInt();
+            inp.nextLine();
+            //yeni değerler ile fieldları güncelle
+        }else System.out.println("Öğrenci bulunamadı");
+    }
 
 
 
