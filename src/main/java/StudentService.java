@@ -1,3 +1,4 @@
+import java.util.List;
 import java.util.Scanner;
 
 //3-student ile ilgili metodlar
@@ -61,6 +62,21 @@ public class StudentService {
             student.setAge(age);
             repository.update(student);
         }else System.out.println("Öğrenci bulunamadı");
+    }
+    //21-girilen ad veya soyad bilgisini içeren kayıtları listeleme
+    //kelime=act---> ad: soyad:React...
+    public void listStudentsByNameOrLastname(){
+        System.out.println("Ad veya Soyad:");
+        String nameOrLastname=inp.nextLine();
+        //birden fazla kayıt dönebilir
+        List<Student> studentList=repository.findStudentByNameorLastname(nameOrLastname);
+        //listedeki öprencileri yazdıralım
+        //liste boşsa?
+        if (studentList.size()==0){
+            System.out.println("Öğrenci bulunamadı");
+        }else {
+            studentList.forEach(System.out::println);
+        }
     }
 
 

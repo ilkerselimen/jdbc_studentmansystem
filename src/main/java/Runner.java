@@ -8,7 +8,7 @@ Proje:Student Management System
                -R:read: öğrenci veya öğrencileri görüntüleme
                -U:update: id ile öğrenci güncelleme
                -D:delete: id ile öğrenci silme
-               - ad-soyad ile öğrenci filtreleme
+               -R: ad-soyad ile öğrenci filtreleme
        işlemlerini yapabilmeli.
      -3-öğrenci:id,name,lastname,city,age özelliklerine sahiptir.
  */
@@ -33,6 +33,7 @@ public class Runner {
             System.out.println("3-Öğrenci güncelle");
             System.out.println("4-Öğrenci sil");
             System.out.println("5-Öğrenci bul");
+            System.out.println("5-Ad veya Soyad ile Öğrenci filtrele");
             System.out.println("0-ÇIKIŞ");
             System.out.println("İşlem seçiniz: ");
             select=inp.nextInt();
@@ -59,7 +60,9 @@ public class Runner {
                     if (student==null){
                         System.out.println("Öğrenci bulunamadı");
                     }else System.out.println(student);
-
+                    break;
+                case 6:
+                    service.listStudentsByNameOrLastname();
                     break;
                 case 0:
                     System.out.println("İyi günler...");

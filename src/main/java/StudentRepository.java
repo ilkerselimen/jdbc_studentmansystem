@@ -1,4 +1,6 @@
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 //4-DB ile iletişimde olan class
 public class StudentRepository {
@@ -189,5 +191,38 @@ public class StudentRepository {
         }
 
 
+    }
+    //22-name veya lastname sütununda girilen harf dizisini içeren kayıtları list içerisinde döndüren method
+    public List<Student> findStudentByNameorLastname(String nameOrLastname) {
+        List<Student> list=new ArrayList<>();
+        getConnection();
+        String searched="%"+nameOrLastname+"%";
+        String query="SELECT * FROM t_students WHERE name ILIKE ? or lastname ILIKE ?";
+        getPreparedStatement(query);
+        try {
+            prst.setString(1,searched);// ILIKE '%name%'
+            prst.setString(2,searched);
+            ResultSet rs=prst.executeQuery();
+            while (rs.next()){
+                Student student = new Student();
+                student.setId(rs.getInt("id"));
+                student.setName(rs.getString("name"));
+                student.setLastName(rs.getString("lastname"));
+                student.setCity(rs.getString("city"));
+                student.setAge(rs.getInt("age"));
+                list.add(student);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }finally {
+            try {
+                prst.close();
+                conn.close();
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+
+        return list;
     }
 }
