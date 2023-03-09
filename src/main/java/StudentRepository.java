@@ -82,18 +82,20 @@ public class StudentRepository {
     public void findAll() {
         getConnection();
         getStatement();
-        String query="SELECT * FROM t_student";
+        String sql="SELECT * FROM t_student";
         try {
-            ResultSet resultSet=st.executeQuery(query);
+            ResultSet resultSet=st.executeQuery(sql);
+            System.out.println("+"+"-".repeat(79)+"+");
+            System.out.printf("| %-5s| %-20s| %-20s| %-20s| %-5s|\n", "id","ad","soyad","sehir","yas");
             while (resultSet.next()){
-                System.out.print("id: "+resultSet.getInt("id"));
-                System.out.print(" - ad: "+resultSet.getString("name"));
-                System.out.print(" - soyad: "+resultSet.getString("lastname"));
-                System.out.print(" - sehir: "+resultSet.getString("city"));
-                System.out.print(" - yas: "+resultSet.getInt("age"));
-                System.out.println();
+                System.out.printf("| %-5d| %-20s| %-20s| %-20s| %-5d|\n", resultSet.getInt("id"),
+                        resultSet.getString("name"),
+                        resultSet.getString("lastname"),
+                        resultSet.getString("city"),
+                        resultSet.getInt("age"));
             }
-        }catch (SQLException e){
+            System.out.println("+"+"-".repeat(79)+"+");
+        } catch (SQLException e) {
             System.out.println(e.getMessage());
         }finally {
             try {
@@ -103,6 +105,7 @@ public class StudentRepository {
                 System.out.println(e.getMessage());
             }
         }
+
     }
 
     //16-tablodan veri silme
