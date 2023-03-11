@@ -11,6 +11,7 @@ Proje:Student Management System
                -R: ad-soyad ile öğrenci filtreleme
        işlemlerini yapabilmeli.
      -3-öğrenci:id,name,lastname,city,age özelliklerine sahiptir.
+ÖDEV:Course Management System
  */
 public class Runner {
     public static void main(String[] args) {
